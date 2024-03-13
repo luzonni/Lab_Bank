@@ -7,37 +7,17 @@ public class Conta {
 
     private static int AMOUNT = 0;
     private int id;
-    protected String titular;
+    protected Client titular;
     protected int numero;
     protected String agencia;
     protected double saldo;
 
     private List<Double> historico;
 
-    public Conta(String titular, String agencia, int numero) {
+    public Conta(Client titular, String agencia, int numero) {
         this.titular = titular;
         this.agencia = agencia;
         this.numero = numero;
-        this.saldo = 0.0;
-        this.historico = new ArrayList<Double>();
-        this.id = Conta.AMOUNT;
-        Conta.AMOUNT++;
-    }
-
-    public Conta(String titular, int numero) {
-        this.titular = titular;
-        this.agencia = "0001";
-        this.numero = numero;
-        this.saldo = 0.0;
-        this.historico = new ArrayList<Double>();
-        this.id = Conta.AMOUNT;
-        Conta.AMOUNT++;
-    }
-
-    public Conta(String titular) {
-        this.titular = titular;
-        this.agencia = "0001";
-        this.numero = 0;
         this.saldo = 0.0;
         this.historico = new ArrayList<Double>();
         this.id = Conta.AMOUNT;
@@ -48,7 +28,7 @@ public class Conta {
         return this.id;
     }
 
-    public String getTitular() {
+    public Client getTitular() {
         return titular;
     }
 
@@ -91,4 +71,9 @@ public class Conta {
         return amount;
     }
 
+    @Override
+    public String toString() {
+        return "Conta com tipo:" + this.getClass().getSimpleName() +" ID: " + this.id + " e Cliente: {\n    " + this.titular.toString() + "\n} \ncom agencia: " +
+                this.agencia + " e numero: " + this.numero;
+    }
 }
